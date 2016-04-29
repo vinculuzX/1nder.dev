@@ -1,0 +1,24 @@
+<ion-view>
+	<ion-content>
+		<div class="card">
+			<div class="item item-avatar">
+				<img ng-src="{{profile.avatar}}">
+				<h5>{{profile.nickname}}</h5>
+				<p>{{profile.name}} {{profile.lastname}}</p>
+			</div>
+			<div class="item item-body">
+					<img ng-repeat = "picture in pictures" class="full-image" ng-src="{{picture.image}}">
+			</div>
+			<div class="padding-left">
+				<label>Comments</h4>
+			</div>
+			<div class="list" ng-repeat="comment in allcomments">
+    			<span class="item item-avatar">
+ 					<img src="{{comment.avatar}}">
+				    <h2>{{comment.nickname}}</h2>
+				    <p>{{comment.comment}}</p>
+    			</span>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

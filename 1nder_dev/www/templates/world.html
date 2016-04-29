@@ -1,0 +1,23 @@
+<ion-view>
+	<ion-content>
+		<div class="card list" ng-repeat="user in users">
+			<div class="item item-avatar" ng-click="redirect(user.profile.id)">
+						<img ng-src="{{user.profile.avatar}}">
+						<b class="col"> {{user.nickname}}</b>
+						<h2 class="col"> March 22 , 2016</h2>
+			</div>
+			<div class="item item-text-wrap">
+				<img class="full-image" ng-src="{{user.image}}">
+			</div>
+			<div class="item item-divider">
+				<span class="padding"></span>
+				<p>{{user.nickname}} says:</p>
+				<p>Captalism once more showing your true face</p>
+			</div>
+			<div class="item item-divider">
+				<span class="padding"></span>
+				<a class="button button-icon icon ion-heart"></a>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

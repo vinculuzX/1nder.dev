@@ -1,0 +1,44 @@
+<ion-view>
+	<ion-nav-bar class="bar-stable">
+		<ion-nav-title>
+			<h1 class="title">{{profile.nickname}}</h1>
+		</ion-nav-title>
+		<ion-nav-buttons side="left">
+			<button class="button-clear" ng-click="myGoBack()"><i class="ion-arrow-left-c"></i></button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content>
+		<div class="row">
+			<div class="item item-avatar">
+				<img ng-src="{{profile.avatar}}">
+				<h5>{{profile.nickname}}</h5>
+				<p>{{profile.name}} {{profile.lastname}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<button ng-show="!isBeingFollowed" ng-click="follow()" class="">Follow</button>
+			<button ng-show="isBeingFollowed" ng-click="unFollow()" class="">Unfollow</button>
+		</div>
+		<div class="item item-body">
+				<img class="full-image" ng-src="">
+		</div>
+		<div class="padding-left">
+			<label>Comments</h4>
+		</div>
+		<div class="list">
+				<span class="item item-avatar">
+					<img ng-src="{{comments_profile.avatar}}">
+					<h2>{{comments_profile.nickname}}</h2>
+					<input type="text" placeholder="Do your Comments here!" ng-model="send.comment">
+					<button ng-click="sendcomment()">send</button>
+				</span>
+				<div ng-repeat ="comment in allcomments">
+					<span class="item item-avatar">
+					<img ng-src="{{comment.avatar}}">
+						<h2>{{comment.nickname}}</h2>
+						<p>{{comment.comment}}</p>
+					</span>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view>
+	<ion-nav-bar>	
+	    <ion-nav-title>
+	      <h5>Register</h5>
+	    </ion-nav-title>				
+	</ion-nav-bar>
+	<ion-content>
+		<span class="padding">
+			<h5  class="padding">
+				Please, Complete your data.
+			</h5>
+		</span>
+		<div class="list list-inset">
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Name" ng-model="sign.name">
+		  </label>
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Lastname" ng-model="sign.lastname">
+		  </label>	
+		   <span class="padding"></span>	  		
+		  <label class="item item-input">
+		    <input type="text" placeholder="Nickname" ng-model="sign.nick">
+		  </label>
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Birthday" ng-model="sign.birthday">
+		  </label>
+		</div>	
+		<div class="padding">
+			<button class="button button-block button-positive" ng-click="addInfo()">
+			  Go Further!
+			</button>
+		</div>	
+	</ion-content>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-view>
+	<ion-nav-bar>		
+		<ion-nav-buttons side="left">
+			<button class="button-clear" ng-click="myGoBack()"><i class="ion-arrow-left-c"></i></button>
+		</ion-nav-buttons>			
+	</ion-nav-bar>
+	<ion-content>
+		<div class="">
+		<span class="padding"><h5 class="padding">Show for Everybody as your world is fantastic</h5></span>
+		</div>
+		<div class="list list-inset">
+		  <label class="item item-input">
+		    <input type="text" placeholder="Email" ng-model="signin.email">
+		  </label>
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="password" placeholder="Password" ng-model="signin.password">
+		  </label>
+		</div>	
+		<div class="padding">
+			<button class="button button-block button-positive"ng-click="AuthAccount()">Go to Wonderland</button>
+		</div>				
+	</ion-content>
+</ion-view>

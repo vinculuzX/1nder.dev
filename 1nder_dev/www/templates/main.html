@@ -1,0 +1,26 @@
+<ion-view view-title="Main">
+	<ion-content>
+		<ion-slide-box on-slide-changed="slideHasChanged($index)">
+		  <ion-slide>
+		    <div class="box blue"><h1>BLUE</h1></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div class="box yellow"><h1>YELLOW</h1></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div class="box pink"><h1>PINK</h1></div>
+		  </ion-slide>
+		</ion-slide-box>	
+	</ion-content>
+	<div style="position: absolute; bottom: 0px; width: 100%">		
+		<div class="list">
+			<a class="item" ng-click="openSignin()">
+				Log-in
+			</a>
+			<a class="item" ng-click="openSignup()">
+				Cadastrar
+			</a>
+		</div>       
+    </div>
+
+</ion-view>

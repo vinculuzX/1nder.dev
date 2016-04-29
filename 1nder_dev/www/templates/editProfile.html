@@ -1,0 +1,39 @@
+<ion-view>
+	<ion-nav-bar>	
+	    <ion-nav-title>
+	      <h5>Edit</h5>
+	    </ion-nav-title>
+		<ion-nav-buttons side="right">
+			<button class="button-clear" ng-click="myEdit()"><i class="ion-checkmark-round"></i></button>
+		</ion-nav-buttons>	
+	</ion-nav-bar>
+	<ion-content>
+		<span class="padding">
+			<h5  class="padding">
+				Hello User, Edit your Profile.
+			</h5>
+		</span>
+		<div class="list list-inset">
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Name" ng-value={{profile.name}} ng-model="profile.name">
+		  </label>
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Lastname" ng-value={{profile.lastname}} ng-model="profile.lastname">
+		  </label>	
+		   <span class="padding"></span>	  		
+		  <label class="item item-input">
+		    <input type="text" placeholder="Nickname" ng-value={{profile.nickname}} ng-model="profile.nickname">
+		  </label>
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Birthday" ng-value={{profile.birthday}}  ng-model="profile.birthday">
+		  </label>
+		  <span class="padding"></span>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Talk one thing wich present you" ng-model="profile.about">
+		  </label>
+		</div>	
+	</ion-content>
+</ion-view>
