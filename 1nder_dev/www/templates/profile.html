@@ -1,29 +1,29 @@
 <ion-view>
 	<ion-nav-bar class="bar-stable">
-		<ion-nav-title>	
+		<ion-nav-title>
 			<h1 class="title">{{profile.nickname}}</h1>
 		</ion-nav-title>
 		<ion-nav-buttons side="left">
 			<button class="button-clear" ng-click="myGoBack()"><i class="ion-arrow-return-left"></i></button>
-		</ion-nav-buttons>	
+		</ion-nav-buttons>
 		<ion-nav-buttons side="right">
 			<button class="button-clear" ng-click="goEdit()"><i class="ion-edit"></i></button>
-		</ion-nav-buttons>		
+		</ion-nav-buttons>
 	</ion-nav-bar>
 	<ion-content class="padding">
 			<div class="item item-avatar">
 				<img ng-src="{{profile.avatar}}">
 				<h2>{{profile.nickname}}</h2>
-				<p>Name: {{profile.name}}  {{profile.lastname}}</p>	
-				<p>Born: {{profile.birthday}}</p>						
+				<p>Name: {{profile.name}}  {{profile.lastname}}</p>
+				<p>Born: {{profile.birthday}}</p>
 			</div>
-			<div class="card row">  				
-  			  <div class="col col-offset-10">Flashs<p><b>???</b></p></div>
-			  <div class="col">Followers <p><b>???</b></p></div>
-			  <div class="col">Following <p><b>???</b></p></div>
-			</div>   
+			<div class="card row">
+  			  <div class="col col-offset-10">Flashs<p><b></b></p></div>
+			  <div class="col">Followers<p><b>{{following}}</b></p></div>
+			  <div class="col">Following<p><b>{{followers}}</b></p></div>
+			</div>
 			<div class="card">
-			  <div class="item item-text-wrap">			    
+			  <div class="item item-text-wrap">
 			    <h2>About me</h2>
 			    <p>{{profile.about}}</p>
 			  </div>

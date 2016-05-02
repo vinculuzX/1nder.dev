@@ -15,6 +15,7 @@ angular.module('starter')
 	$scope.openSignin = function(){
 		$state.go('sign-in')
 	}
+
 })
 .controller("SignupCtrl",function($scope,$state,$rootScope,$firebaseArray,$dbConnect){
 	// creating account user
@@ -147,33 +148,28 @@ Rack test
 		$state.go("myProfile",{uid:userID});
 	};
 
-	// Camera Plugin
+	// openning Camera
 	$scope.openCamera = function() {
-         var options = {
-             quality: 100,
-             destinationType: Camera.DestinationType.DATA_URL,
-             sourceType: Camera.PictureSourceType.CAMERA,
-						 allowEdit: false,
-					   targetWidth: 655,
-						 targetHeight: 460,
-             encodingType: Camera.EncodingType.JPEG,
-             popoverOptions: CameraPopoverOptions,
-             saveToPhotoAlbum: false
-         };
+		var options = {
+					quality: 100,
+					destinationType: Camera.DestinationType.DATA_URL,
+					sourceType: Camera.PictureSourceType.CAMERA,
+					allowEdit: false,
+					encodingType: Camera.EncodingType.JPEG,
+					targetWidth: 650,
+					targetHeight: 450,
+					popoverOptions: CameraPopoverOptions,
+					saveToPhotoAlbum: false,
+					correctOrientation : true
+			};
 
-         $cordovaCamera.getPicture(options).then(function(imageData) {
-             $scope.srcImage = "data:image/jpeg;base64," + imageData;
-						 var addPicture = $dbConnect.child("pictures/");
-						 addPicture.push({
-							 uid:userID,
-							 image: $scope.srcImage,
-							 date_posted:Firebase.ServerValue.TIMESTAMP
-						 })
-						console.log($scope.srcImage);
-         }, function(err) {
-							console.log("error" + err);
-         });
-			}
+			$cordovaCamera.getPicture(options).then(function(imageData) {
+					$rootScope.srcImage = "data:image/jpeg;base64," + imageData;
+			}, function(err) {
+					// error
+			});
+			$state.go("publish",{uid:userID});
+		}
 
 })
 .controller('ProfileCtrl',function($scope,$state,$firebaseArray,$dbConnect,$localStorage){
@@ -189,6 +185,14 @@ Rack test
 	$scope.goEdit = function(){
 		$state.go("editProfile",{uid:userID});
 	}
+	// statistics
+	var statistics =  $dbConnect.child("users/"+ userID);
+	statistics.once("value", function(stats) {
+
+		$scope.following = stats.child("following").numChildren();
+		$scope.followers = stats.child("followers").numChildren();
+
+	});
 	// developing editProfile
 	$scope.myEdit = function(){
 
@@ -234,9 +238,8 @@ Rack test
 	var query_images = $dbConnect.child("pictures/");
 	query_images.orderByChild("uid").equalTo(userID).once('value',function(dataimages){
 		$scope.pictures = dataimages.val();
-		console.log($scope.pictures);
-	});
 
+	});
 	// comments
 	var comments = $dbConnect.child("users/"+ userID + "/comments")
 	// viewing comments
@@ -250,14 +253,10 @@ Rack test
 	// connecting with database
 	var query_following =  $dbConnect.child("users/"+ primaryID +"/following/");
 	var query_feedData = $dbConnect.child("pictures/");
-	var data_users = [];
-	var i = 0;
 	// find following
 	query_following.once("child_added",function(fwing) {
 			query_feedData.orderByChild("uid").equalTo(fwing.val().fwing_uid).once('value',function(dataimages){
-				data_users[i] = (dataimages.val()); i++ ;
-					$scope.users = data_users;
-					console.log($scope.users);
+					$scope.users  = dataimages.val();
 			})
 	});
 	$scope.redirect = function(usersid){
@@ -319,10 +318,30 @@ Rack test
 		// clear field
 		this.send.comment = '';
 	}
+})
 
+.controller('PublishCtrl',function($scope,$rootScope,$state,$dbConnect,$localStorage,$ionicHistory){
 
+	//getting parameters id
+	var primaryID = $localStorage.get("params");
+	var query =  $dbConnect.child("users/"+ primaryID +"/profile/");
+	query.once('value',function(params){
+				$rootScope.userparams = params.val();
+	})
+	// publishing picture
+	$scope.publish = function(){
+		var description = this.publish.description;
+		var picture = $rootScope.srcImage;
+		var addPicture = $dbConnect.child("pictures/");
+		addPicture.push({
+			uid:primaryID,
+			avatar:$rootScope.userparams.avatar,
+			nickname:$rootScope.userparams.nickname,
+			description:description,
+			image:picture,
+			date_posted:Firebase.ServerValue.TIMESTAMP
+		})
 
-
-
-
+		$ionicHistory.goBack()
+	}
 })

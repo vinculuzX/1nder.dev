@@ -19,13 +19,14 @@
 			<button ng-show="!isBeingFollowed" ng-click="follow()" class="">Follow</button>
 			<button ng-show="isBeingFollowed" ng-click="unFollow()" class="">Unfollow</button>
 		</div>
-		<div class="item item-body">
-				<img class="full-image" ng-src="">
+		<div ng-repeat="" class="item item-body">
+			<img class="full-image" ng-src="">
+			<p></p>
 		</div>
 		<div class="padding-left">
 			<label>Comments</h4>
-		</div>
-		<div class="list">
+			</div>
+			<div class="list">
 				<span class="item item-avatar">
 					<img ng-src="{{comments_profile.avatar}}">
 					<h2>{{comments_profile.nickname}}</h2>
@@ -34,11 +35,11 @@
 				</span>
 				<div ng-repeat ="comment in allcomments">
 					<span class="item item-avatar">
-					<img ng-src="{{comment.avatar}}">
+						<img ng-src="{{comment.avatar}}">
 						<h2>{{comment.nickname}}</h2>
 						<p>{{comment.comment}}</p>
 					</span>
+				</div>
 			</div>
-		</div>
-	</ion-content>
-</ion-view>
+		</ion-content>
+	</ion-view>

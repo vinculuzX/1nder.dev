@@ -1,0 +1,20 @@
+<ion-view>
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-buttons side="left">
+      <button class="button-clear" ng-click="myGoBack()"><i class="ion-arrow-left-c"></i></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button-clear" ng-click="publish()">publish</i></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="row">
+        <img ng-src="{{srcImage || 'http://placehold.it/650x450.jpg'}}" width="650" height="450" style="display: block; margin: 0 auto;">
+    </div>
+    <div class="list">
+        <label class="item item-input">
+              <input type="text" placeholder="Show us which your fell about this picture" ng-model="publish.description">
+        </label>
+    </div>
+  </ion-content>
+</ion-view>

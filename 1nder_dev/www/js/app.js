@@ -72,6 +72,11 @@ angular.module("starter", ["ionic","firebase","ngCordova"])
       templateUrl:"templates/userpost.html",
       controller:"usersPostCtrl"
     })
+    .state('publish',{
+      url:"/publish/:uid",
+      templateUrl:"templates/publish.html",
+      controller:"PublishCtrl"
+    })
     .state('dashboard',{
       url:"/dash",
       abstract: true,
