@@ -1,24 +1,37 @@
-<ion-view>
-	<ion-nav-bar>		
-		<ion-nav-buttons side="left">
-			<button class="button-clear" ng-click="myGoBack()"><i class="ion-arrow-left-c"></i></button>
-		</ion-nav-buttons>			
-	</ion-nav-bar>
+<ion-view view-title="Login" align-title="left">
 	<ion-content>
-		<div class="">
-		<span class="padding"><h5 class="padding">Show for Everybody as your world is fantastic</h5></span>
-		</div>
-		<div class="list list-inset">
-		  <label class="item item-input">
-		    <input type="text" placeholder="Email" ng-model="signin.email">
-		  </label>
-		  <span class="padding"></span>
-		  <label class="item item-input">
-		    <input type="password" placeholder="Password" ng-model="signin.password">
-		  </label>
-		</div>	
-		<div class="padding">
-			<button class="button button-block button-positive"ng-click="AuthAccount()">Go to Wonderland</button>
-		</div>				
+
+			<div class="hero no-header flat">
+					<div class="content">
+							<h1>Sign in</h1>
+					</div>
+			</div>
+			<div class="padding"></div>
+			<form name="ValidForm">
+				<md-input-container class="md-block">
+					<label>Email</label>
+					<input required name="clientEmail" type="email" ng-model="signin.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"/>
+					<div ng-messages="ValidForm.clientEmail.$error" role="alert">
+					<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+						Your email must be between 10 and 100 characters long and look like an e-mail address.
+					</div>
+				</div>
+				</md-input-container>
+				<md-input-container class="md-block">
+					<label>Password</label>
+					<input required name="clientPassword" type="password" ng-model="signin.password"/>
+					<div ng-messages="ValidForm.clientPassword.$error">
+          	<div ng-message="required">This is required.</div>
+        	</div>
+				</md-input-container>
+				<div class="padding" layout="row" layout-align="center center">
+					<button class="button button-small button-positive ink" ng-click="AuthAccount()">Go to Wonderland</button>
+				</div>
+		</form>
 	</ion-content>
+	<div class="bar bar-footer bar-calm" ng-click="openSignup()">
+		<div class="title">
+				<i class="ion-person-add"></i>  Sign up
+		</div>
+	</div>
 </ion-view>

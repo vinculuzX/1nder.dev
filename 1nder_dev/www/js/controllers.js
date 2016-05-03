@@ -7,10 +7,6 @@ angular.module('starter')
   	};
 })
 .controller("MainCtrl",function($scope,$state){
-	//openning sign up
-	$scope.openSignup = function(){
-		$state.go('sign-up');
-	}
 	//openning sign in
 	$scope.openSignin = function(){
 		$state.go('sign-in')
@@ -20,10 +16,10 @@ angular.module('starter')
 .controller("SignupCtrl",function($scope,$state,$rootScope,$firebaseArray,$dbConnect){
 	// creating account user
 	$scope.CreateAccount = function(){
-		//$rootScope.email = this.sign.email;	// email
-		//var password = this.sign.password; // password
-		$rootScope.email = "test@test.com";	// email
-		var password = "test"; // password
+		$rootScope.email = this.signup.email;	// email
+		var password = this.signup.password; // password
+		//$rootScope.email = "test@test.com";	// email
+		//var password = "test"; // password
 
 		$dbConnect.createUser({email:$rootScope.email , password:password},function(error,userData){
 			if(error){
@@ -49,10 +45,10 @@ angular.module('starter')
 	};
 	$scope.addInfo = function(){
 		//referindg data of the register forms
-		var name = this.sign.name;
-		var lastname = this.sign.lastname;
-		var nickname = this.sign.nick;
-		var birthday = this.sign.birthday;
+		var name = this.signup.name;
+		var lastname = this.signup.lastname;
+		var nickname = this.signup.nick;
+		var birthday = this.signup.birthday;
 		// creating query into database Firebase
 		var userRef = $dbConnect.child("users/" + $rootScope.userID);
 		// inserting data users into database
@@ -93,6 +89,12 @@ var newUserRef = UserRef.set({
 })
 
 .controller("SigninCtrl",function($scope,$state,$dbConnect,$localStorage){
+
+	//openning sign up
+	$scope.openSignup = function(){
+		$state.go('sign-up');
+	}
+
 /*
 Rack test
 	var email = "test@test.com";

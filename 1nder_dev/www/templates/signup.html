@@ -1,34 +1,31 @@
 <ion-view>
-	<ion-nav-bar>	
-    	<ion-nav-title>
-	      <h5>Register</h5>
-	    </ion-nav-title>	
-		<ion-nav-buttons side="left">
-			<button class="button-clear" ng-click="myGoBack()"><i class="ion-arrow-left-c"></i></button>
-		</ion-nav-buttons>			
-	</ion-nav-bar>
 	<ion-content>
-		<div class="">
-		<span class="padding"><h5 class="padding">Show for Everybody your vision about your World. Using the celphone camera you can realize fantastic picture and moment unforgetness</h5></span>
+		<div class="hero no-header flat">
+				<div class="content">
+						<h1>Sign up</h1>
+				</div>
 		</div>
-		<div class="list list-inset">
-		  <label class="item item-input">
-		    <input type="text" placeholder="Email" ng-model="sign.email">
-		  </label>
-		  <span class="padding"></span>
-		  <span class="padding"></span>
-		  <label class="item item-input">
-		    <input type="password" placeholder="Password" ng-model="sign.password">
-		  </label>
-		</div>	
-		<div class="padding">
-			<button class="button button-block button-positive" ng-click="CreateAccount()">Give me a click</button>
-		</div>
-
-		<div class="padding">
-
-			<button>Facebook</button>
-
-		</div>				
+		<div class="padding"></div>
+		<form name="ValidForm">
+			<md-input-container class="md-block">
+				<label>Email</label>
+				<input required name="clientEmail" type="email" ng-model="signup.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"/>
+				<div ng-messages="ValidForm.clientEmail.$error" role="alert">
+				<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+					Your email must be between 10 and 100 characters long and look like an e-mail address.
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Password</label>
+				<input required name="clientPassword" ng-model="signup.password">
+				<div ng-messages="ValidForm.clientPassword.$error">
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<div class="padding"></div>
+			<div class="padding">
+				<button class="button button-small button-block button-positive ink" ng-click="CreateAccount()">Go Futher</button>
+			</div>
+	</form>
 	</ion-content>
 </ion-view>

@@ -1,37 +1,46 @@
 <ion-view>
-	<ion-nav-bar>	
-	    <ion-nav-title>
-	      <h5>Register</h5>
-	    </ion-nav-title>				
-	</ion-nav-bar>
 	<ion-content>
-		<span class="padding">
-			<h5  class="padding">
-				Please, Complete your data.
-			</h5>
-		</span>
-		<div class="list list-inset">
-		  <span class="padding"></span>
-		  <label class="item item-input">
-		    <input type="text" placeholder="Name" ng-model="sign.name">
-		  </label>
-		  <span class="padding"></span>
-		  <label class="item item-input">
-		    <input type="text" placeholder="Lastname" ng-model="sign.lastname">
-		  </label>	
-		   <span class="padding"></span>	  		
-		  <label class="item item-input">
-		    <input type="text" placeholder="Nickname" ng-model="sign.nick">
-		  </label>
-		  <span class="padding"></span>
-		  <label class="item item-input">
-		    <input type="text" placeholder="Birthday" ng-model="sign.birthday">
-		  </label>
-		</div>	
-		<div class="padding">
-			<button class="button button-block button-positive" ng-click="addInfo()">
-			  Go Further!
-			</button>
-		</div>	
+		<form name="ValidForm">
+			<md-input-container class="md-block">
+				<div class="padding"></div>
+				<div class="row" ng-click="shotAvatar()">
+					<img ng-src="{{srcAvatar || 'http://placehold.it/150x150.jpg'}}" width="150" height="150" style="border:1px solid;display: block; margin: 0 auto;">
+				</div>
+				<div class="padding"></div>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>First Name</label>
+				<input required name="ClientName" type="text" ng-model="sign.name">
+				<div ng-messages="ValidForm.ClientName.$error">
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Last Name</label>
+				<input required name="ClientLast" type="text" ng-model="sign.lastname">
+				<div ng-messages="ValidForm.ClientLast.$error">
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Nickname</label>
+				<input  required name="ClientNick" type="text" ng-model="sign.nick" >
+				<div ng-messages="ValidForm.ClientNick.$error">
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Birthday</label>
+				<input type="date" ng-model="sign.birthday" ng-pattern="/^(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])\/(199\d|[2-9]\d{3})$/">
+				<div ng-messages="ValidForm.ClientName.$error">
+					<div ng-message-exp=["required","pattern"]>This is required.</div>
+				</div>
+			</md-input-container>
+		</form>
 	</ion-content>
+	<div class="bar bar-footer bar-calm" ng-click="addInfo()">
+		<div class="title">
+			Finish
+		</div>
+	</div>
 </ion-view>
